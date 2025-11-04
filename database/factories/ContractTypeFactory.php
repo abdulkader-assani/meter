@@ -19,16 +19,19 @@ class ContractTypeFactory extends Factory
         $types = [
             [
                 'code' => 'rent',
+                'slug' => 'rent',
                 'name_en' => 'Rent',
                 'name_ar' => 'إيجار'
             ],
             [
                 'code' => 'sale',
+                'slug' => 'sale',
                 'name_en' => 'Sale',
                 'name_ar' => 'بيع'
             ],
             [
                 'code' => 'lease',
+                'slug' => 'lease',
                 'name_en' => 'Lease',
                 'name_ar' => 'تأجير'
             ],
@@ -36,6 +39,7 @@ class ContractTypeFactory extends Factory
         $pick = $this->faker->unique()->randomElement($types);
         return [
             'code' => $pick['code'],
+            'slug' => $pick['slug'],
             'name_en' => $pick['name_en'],
             'name_ar' => $pick['name_ar'],
         ];

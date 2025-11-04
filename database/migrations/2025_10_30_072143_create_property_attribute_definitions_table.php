@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('property_attribute_definitions', function (Blueprint $table) {
             $table->id();
+            $table->string('slug', 255)->unique()->nullable();
             $table->unsignedBigInteger('property_type_id');
             $table->string('code', 100);
             $table->string('name', 200);

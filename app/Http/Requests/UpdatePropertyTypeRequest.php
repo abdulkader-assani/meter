@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SendCodeRequest extends FormRequest
+class UpdatePropertyTypeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,8 +21,13 @@ class SendCodeRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->route('propertyType')?->id ?? null;
         return [
-            'phone' => 'required|string|max:20|regex:/^09[0-9]{8}$/',
+            'category_id' => 'sometimes|required|exists:categories,id',
+            'slug' => 'sometimes|required|string|max:100|unique:property_types,slug,' . $id,
+            'code' => 'sometimes|required|string|max:100',
+            'name_ar' => 'sometimes|required|string|max:200',
+            'name_en' => 'sometimes|required|string|max:200',
         ];
     }
 }

@@ -20,20 +20,24 @@ class FeatureTypeFactory extends Factory
         $types = [
             [
                 'code' => 'basic',
+                'slug' => 'basic',
                 'name' => 'Basic Features'
             ],
             [
                 'code' => 'amenity',
+                'slug' => 'amenity',
                 'name' => 'Amenities'
             ],
             [
                 'code' => 'security',
+                'slug' => 'security',
                 'name' => 'Security Features'
             ],
         ];
         $pick = $this->faker->unique()->randomElement($types);
         return [
             'code' => $pick['code'],
+            'slug' => $pick['slug'],
             'name' => $pick['name'],
         ];
     }

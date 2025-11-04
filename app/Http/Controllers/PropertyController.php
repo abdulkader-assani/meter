@@ -10,6 +10,7 @@ use App\Http\Resources\PropertyResource;
 use App\Http\Requests\StorePropertyRequest;
 use App\Http\Requests\UpdatePropertyRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PropertyController extends Controller
 {
@@ -27,13 +28,9 @@ class PropertyController extends Controller
     }
 
     // Public show endpoint
-    public function show($id)
+    public function show(Property $property)
     {
-        $property = Property::with(['user', 'category', 'propertyType', 'contractType', 'features', 'propertyAttributeValues.attribute'])
-            ->find($id);
-        if (!$property) {
-            return response()->json(['message' => 'Property not found'], 404);
-        }
+        $property->load(['user', 'category', 'propertyType', 'contractType', 'features', 'propertyAttributeValues.attribute']);
         return new PropertyResource($property);
     }
 
@@ -55,6 +52,9 @@ class PropertyController extends Controller
         $user = $request->user();
         $data = $request->validated();
         $data['user_id'] = $user->id; // Ensure user_id is set to authenticated user
+        if (empty($data['slug'])) {
+            $data['slug'] = Str::slug(($data['location'] ?? 'property').'-'.Str::random(6));
+        }
         $features = $data['features'] ?? [];
         unset($data['features']);
 
@@ -68,10 +68,10 @@ class PropertyController extends Controller
     }
 
     // User's properties - update ad
-    public function update(UpdatePropertyRequest $request, $id)
+    public function update(UpdatePropertyRequest $request, Property $property)
     {
         $user = $request->user();
-        $property = Property::where('user_id', $user->id)->find($id);
+        $property = Property::where('user_id', $user->id)->where('slug', $property->slug)->first();
 
         if (!$property) {
             return response()->json(['message' => 'Property not found'], 404);
@@ -79,7 +79,7 @@ class PropertyController extends Controller
 
         $data = $request->validated();
         // Prevent user from changing user_id
-        unset($data['user_id']);
+        unset($data['slug']);
         $features = $data['features'] ?? null;
         unset($data['features']);
 
@@ -93,10 +93,10 @@ class PropertyController extends Controller
     }
 
     // User's properties - delete ad
-    public function destroy(Request $request, $id)
+    public function destroy(Request $request, Property $property)
     {
         $user = $request->user();
-        $property = Property::where('user_id', $user->id)->find($id);
+        $property = Property::where('user_id', $user->id)->where('slug', $property->slug)->first();
 
         if (!$property) {
             return response()->json(['message' => 'Property not found'], 404);
@@ -119,39 +119,39 @@ class PropertyController extends Controller
     }
 
     // Favorites - add property to favorites
-    public function addToFavorites(Request $request, $id)
+    public function addToFavorites(Request $request, Property $property)
     {
         $user = $request->user();
-        $property = Property::find($id);
+        $property = Property::where('slug', $property->slug)->first();
 
         if (!$property) {
             return response()->json(['message' => 'Property not found'], 404);
         }
 
-        if ($user->favoriteProperties()->where('property_id', $id)->exists()) {
+        if ($user->favoriteProperties()->where('property_id', $property->id)->exists()) {
             return response()->json(['message' => 'Property already in favorites'], 422);
         }
 
-        $user->favoriteProperties()->attach($id);
+        $user->favoriteProperties()->attach($property->id);
 
         return response()->json(['message' => 'Property added to favorites'], 200);
     }
 
     // Favorites - remove property from favorites
-    public function removeFromFavorites(Request $request, $id)
+    public function removeFromFavorites(Request $request, Property $property)
     {
         $user = $request->user();
-        $property = Property::find($id);
+        $property = Property::where('slug', $property->slug)->first();
 
         if (!$property) {
             return response()->json(['message' => 'Property not found'], 404);
         }
 
-        if (!$user->favoriteProperties()->where('property_id', $id)->exists()) {
+        if (!$user->favoriteProperties()->where('property_id', $property->id)->exists()) {
             return response()->json(['message' => 'Property is not in favorites'], 422);
         }
 
-        $user->favoriteProperties()->detach($id);
+        $user->favoriteProperties()->detach($property->id);
 
         return response()->json(['message' => 'Property removed from favorites'], 200);
     }

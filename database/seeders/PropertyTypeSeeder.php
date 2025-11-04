@@ -16,6 +16,7 @@ class PropertyTypeSeeder extends Seeder
         PropertyType::insert([
             [
                 'category_id' => 1,
+                'slug' => 'apartment',
                 'code' => 'apartment',
                 'name_ar' => 'شقة',
                 'name_en' => 'Apartment',
@@ -24,6 +25,7 @@ class PropertyTypeSeeder extends Seeder
             ],
             [
                 'category_id' => 1,
+                'slug' => 'villa',
                 'code' => 'villa',
                 'name_ar' => 'فيلا',
                 'name_en' => 'Villa',
@@ -32,6 +34,7 @@ class PropertyTypeSeeder extends Seeder
             ],
             [
                 'category_id' => 2,
+                'slug' => 'office',
                 'code' => 'office',
                 'name_ar' => 'مكتب',
                 'name_en' => 'Office',
@@ -40,6 +43,7 @@ class PropertyTypeSeeder extends Seeder
             ],
             [
                 'category_id' => 2,
+                'slug' => 'shop',
                 'code' => 'shop',
                 'name_ar' => 'محل',
                 'name_en' => 'Shop',

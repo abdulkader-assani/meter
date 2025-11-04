@@ -31,6 +31,7 @@ class CategoryFactory extends Factory
         $idx = $this->faker->unique()->numberBetween(0, 3);
         return [
             'code' => strtolower($names_en[$idx]),
+            'slug' => strtolower($names_en[$idx]),
             'name_ar' => $names_ar[$idx],
             'name_en' => $names_en[$idx],
         ];

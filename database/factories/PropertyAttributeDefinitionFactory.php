@@ -19,19 +19,23 @@ class PropertyAttributeDefinitionFactory extends Factory
         $attributes = [
             [
                 'code' => 'floor_area',
+                'slug' => 'floor_area',
                 'name' => 'Floor Area'
             ],
             [
                 'code' => 'room_count',
+                'slug' => 'room_count',
                 'name' => 'Room Count'
             ],
             [
                 'code' => 'bathroom_count',
-                'name' => 'Number of Bathrooms'
+                'slug' => 'bathroom_count',
+                'name' => 'Number of Bathrooms',
             ],
             [
                 'code' => 'plot_size',
-                'name' => 'Plot Size'
+                'slug' => 'plot_size',
+                'name' => 'Plot Size',
             ],
         ];
         $pick = $this->faker->unique()->randomElement($attributes);
@@ -40,6 +44,7 @@ class PropertyAttributeDefinitionFactory extends Factory
             'property_type_id' => \App\Models\PropertyType::inRandomOrder()->first()?->id ?? 1,
             'code' => $pick['code'],
             'name' => $pick['name'],
+            'slug' => $pick['slug'],
         ];
     }
 }

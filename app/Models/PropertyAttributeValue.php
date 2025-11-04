@@ -14,6 +14,16 @@ class PropertyAttributeValue extends Model
         'attribute_id',
         'value'
     ];
+    // -------------------------------------------------------------
+    // Route Key Name
+    // -------------------------------------------------------------
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+    // -------------------------------------------------------------
+    // Relationships
+    // -------------------------------------------------------------
 
     public function property()
     {

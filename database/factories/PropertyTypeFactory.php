@@ -19,21 +19,25 @@ class PropertyTypeFactory extends Factory
         $types = [
             [
                 'code' => 'apartment',
+                'slug' => 'apartment',
                 'name_en' => 'Apartment',
                 'name_ar' => 'شقة'
             ],
             [
                 'code' => 'villa',
+                'slug' => 'villa',
                 'name_en' => 'Villa',
                 'name_ar' => 'فيلا'
             ],
             [
                 'code' => 'office',
+                'slug' => 'office',
                 'name_en' => 'Office',
                 'name_ar' => 'مكتب'
             ],
             [
                 'code' => 'shop',
+                'slug' => 'shop',
                 'name_en' => 'Shop',
                 'name_ar' => 'محل'
             ],
@@ -42,6 +46,7 @@ class PropertyTypeFactory extends Factory
         return [
             'category_id' => \App\Models\Category::inRandomOrder()->first()?->id ?? 1,
             'code' => $pick['code'],
+            'slug' => $pick['slug'],
             'name_en' => $pick['name_en'],
             'name_ar' => $pick['name_ar'],
         ];

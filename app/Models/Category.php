@@ -22,7 +22,7 @@ class Category extends Model
     // -------------------------------------------------------------
     public function getRouteKeyName()
     {
-        return 'name_en';
+        return 'slug';
     }
     // -------------------------------------------------------------
     // Relationships

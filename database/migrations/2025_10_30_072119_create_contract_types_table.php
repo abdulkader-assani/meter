@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('contract_types', function (Blueprint $table) {
             $table->id();
+            $table->string('slug', 255)->unique()->nullable();
             $table->string('code', 100);
             $table->string('name_ar', 100);
             $table->string('name_en', 100);

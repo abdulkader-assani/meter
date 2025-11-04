@@ -16,6 +16,7 @@ class UserResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'slug' => $this->slug,
             'full_name' => $this->full_name,
             'phone' => $this->phone,
             'type' => $this->type,
@@ -24,7 +25,8 @@ class UserResource extends JsonResource
             'lat' => $this->lat,
             'lng' => $this->lng,
             'profile_image' => $this->profile_image,
-            'created_at' => $this->created_at,
+            'created_at' => $this->created_at,  
+            'updated_at' => $this->updated_at,
         ];
     }
 }

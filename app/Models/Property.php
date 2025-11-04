@@ -26,15 +26,16 @@ class Property extends Model
         'offerer',
         'lat',
         'lng',
-        'location'
+        'location',
+        'slug'
     ];
     // -------------------------------------------------------------
     // Route Key Name
     // -------------------------------------------------------------
-    // public function getRouteKeyName()
-    // {
-    //     return 'name_en';
-    // }
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
     // -------------------------------------------------------------
     // Relationships
     // -------------------------------------------------------------

@@ -8,6 +8,7 @@ use Database\Seeders\ContractTypeSeeder;
 use Database\Seeders\PropertyTypeSeeder;
 use Database\Seeders\FeatureTypeSeeder;
 use Database\Seeders\FeatureSeeder;
+use Database\Seeders\UserSeeder;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -31,6 +32,7 @@ class DatabaseSeeder extends Seeder
             PropertyTypeSeeder::class,
             FeatureTypeSeeder::class,
             FeatureSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }

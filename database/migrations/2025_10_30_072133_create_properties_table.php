@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
+            $table->string('slug', 255)->unique()->nullable();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('property_type_id');
@@ -20,9 +21,9 @@ return new class extends Migration
             $table->decimal('price', 15, 2);
             $table->string('owner', 100);
             $table->string('offerer', 200);
-            $table->decimal('lat', 10, 8);
-            $table->decimal('lng', 11, 8);
-            $table->string('location', 255);
+            $table->decimal('lat', 10, 8)->nullable();
+            $table->decimal('lng', 11, 8)->nullable();
+            $table->string('location', 255)->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
@@ -38,5 +39,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('properties');
+        Schema::table('properties', function (Blueprint $table) {
+            $table->dropUnique(['slug']);
+            $table->dropColumn('slug');
+        });
     }
 };

@@ -16,6 +16,7 @@ class FeatureSeeder extends Seeder
         Feature::insert([
             [
                 'type_id' => 1,
+                'slug' => 'elevator',
                 'code' => 'elevator',
                 'name' => 'Elevator',
                 'created_at' => now(),
@@ -23,6 +24,7 @@ class FeatureSeeder extends Seeder
             ],
             [
                 'type_id' => 1,
+                'slug' => 'balcony',
                 'code' => 'balcony',
                 'name' => 'Balcony',
                 'created_at' => now(),
@@ -30,6 +32,7 @@ class FeatureSeeder extends Seeder
             ],
             [
                 'type_id' => 2,
+                'slug' => 'parking',
                 'code' => 'parking',
                 'name' => 'Parking',
                 'created_at' => now(),
@@ -37,6 +40,7 @@ class FeatureSeeder extends Seeder
             ],
             [
                 'type_id' => 2,
+                'slug' => 'gym',
                 'code' => 'gym',
                 'name' => 'Gym',
                 'created_at' => now(),

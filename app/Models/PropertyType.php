@@ -20,7 +20,7 @@ class PropertyType extends Model
     // -------------------------------------------------------------
     public function getRouteKeyName()
     {
-        return 'name_en';
+        return 'slug';
     }
     // -------------------------------------------------------------
     // Relationships

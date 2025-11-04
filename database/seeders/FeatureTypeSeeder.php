@@ -16,12 +16,14 @@ class FeatureTypeSeeder extends Seeder
         FeatureType::insert([
             [
                 'code' => 'basic',
+                'slug' => 'basic',
                 'name' => 'Basic Features',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'code' => 'amenity',
+                'slug' => 'amenity',
                 'name' => 'Amenities',
                 'created_at' => now(),
                 'updated_at' => now()

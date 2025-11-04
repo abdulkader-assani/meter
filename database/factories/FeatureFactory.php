@@ -19,22 +19,27 @@ class FeatureFactory extends Factory
         $features = [
             [
                 'code' => 'elevator',
+                'slug' => 'elevator',
                 'name' => 'Elevator'
             ],
             [
                 'code' => 'balcony',
+                'slug' => 'balcony',
                 'name' => 'Balcony'
             ],
             [
                 'code' => 'parking',
+                'slug' => 'parking',
                 'name' => 'Parking'
             ],
             [
                 'code' => 'gym',
+                'slug' => 'gym',
                 'name' => 'Gym'
             ],
             [
                 'code' => 'security',
+                'slug' => 'security',
                 'name' => 'Security'
             ],
         ];
@@ -42,6 +47,7 @@ class FeatureFactory extends Factory
         return [
             'type_id' => \App\Models\FeatureType::inRandomOrder()->first()?->id ?? 1,
             'code' => $pick['code'],
+            'slug' => $pick['slug'],
             'name' => $pick['name'],
         ];
     }

@@ -30,11 +30,11 @@ class AppServiceProvider extends ServiceProvider
 
             if ($category instanceof Category) {
                 return PropertyType::where('category_id', $category->id)
-                    ->where('name_en', $value)
+                    ->where('slug', $value)
                     ->firstOrFail();
             }
 
-            return PropertyType::where('name_en', $value)->firstOrFail();
+            return PropertyType::where('slug', $value)->firstOrFail();
         });
     }
 }

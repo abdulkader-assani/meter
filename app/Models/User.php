@@ -19,6 +19,7 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
+        'slug',
         'full_name',
         'phone',
         'type',
@@ -53,6 +54,16 @@ class User extends Authenticatable
         ];
     }
 
+    // -------------------------------------------------------------
+    // Route Key Name
+    // -------------------------------------------------------------
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+    // -------------------------------------------------------------
+    // Relationships
+    // -------------------------------------------------------------
     public function properties()
     {
         return $this->hasMany(Property::class);

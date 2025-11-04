@@ -17,6 +17,17 @@ class PropertyFeature extends Model
         'feature_id'
     ];
 
+    // -------------------------------------------------------------
+    // Route Key Name
+    // -------------------------------------------------------------
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+    // -------------------------------------------------------------
+    // Relationships
+    // -------------------------------------------------------------
+
     public function property()
     {
         return $this->belongsTo(Property::class);

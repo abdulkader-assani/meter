@@ -17,6 +17,7 @@ class PropertyFeatureFactory extends Factory
     public function definition(): array
     {
         return [
+            'slug' => $this->faker->unique()->slug(),
             'property_id' => \App\Models\Property::inRandomOrder()->first()?->id ?? 1,
             'feature_id' => \App\Models\Feature::inRandomOrder()->first()?->id ?? 1,
         ];

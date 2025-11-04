@@ -37,13 +37,13 @@ Route::middleware('auth:sanctum')->group(function () {
     // Filtering endpoints
     // -------------------------------------------------------------
     Route::get('/categories', [CategoryController::class, 'index']);
-    Route::get('/categories/{category:name_en}', [ContractTypeController::class, 'index']);
-    Route::get('/categories/{category:name_en}/{contractType:name_en}', [PropertyTypeController::class, 'index']);
+    Route::get('/categories/{category:slug}', [ContractTypeController::class, 'index']);
+    Route::get('/categories/{category:slug}/{contractType:slug}', [PropertyTypeController::class, 'index']);
     Route::get(
-        '/categories/{category:name_en}/{contractType:name_en}/{propertyType:name_en}',
+        '/categories/{category:slug}/{contractType:slug}/{propertyType:slug}',
         [PropertyController::class, 'index']
     );
-    Route::get('/properties/{id}', [PropertyController::class, 'show']);
+    Route::get('/properties/{property:slug}', [PropertyController::class, 'show']);
 
     // -------------------------------------------------------------
     // Navbar endpoints
@@ -59,16 +59,16 @@ Route::middleware('auth:sanctum')->group(function () {
     // -------------------------------------------------------------
     Route::prefix('my-properties')->group(function () {
         Route::get('/', [PropertyController::class, 'myProperties']);
-        Route::put('/{id}', [PropertyController::class, 'update']);
-        Route::delete('/{id}', [PropertyController::class, 'destroy']);
+        Route::put('/{property:slug}', [PropertyController::class, 'update']);
+        Route::delete('/{property:slug}', [PropertyController::class, 'destroy']);
     });
 
     // -------------------------------------------------------------
     // Favorites management
     // -------------------------------------------------------------
     Route::prefix('favorites')->group(function () {
-        Route::post('/{id}', [PropertyController::class, 'addToFavorites']);
-        Route::delete('/{id}', [PropertyController::class, 'removeFromFavorites']);
+        Route::post('/{property:slug}', [PropertyController::class, 'addToFavorites']);
+        Route::delete('/{property:slug}', [PropertyController::class, 'removeFromFavorites']);
     });
 
     // -------------------------------------------------------------

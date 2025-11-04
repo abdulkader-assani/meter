@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SendCodeRequest extends FormRequest
+class SearchPropertyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,7 +22,7 @@ class SendCodeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'phone' => 'required|string|max:20|regex:/^09[0-9]{8}$/',
+            //
         ];
     }
 }

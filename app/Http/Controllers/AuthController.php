@@ -17,19 +17,20 @@ class AuthController extends Controller
     {
         $phone = $request->validated()['phone'];
 
-        $user = User::where('phone', $phone)->first();
-        if (!$user) {
-            return response()->json(['message' => 'User not found.'], 404);
-        }
+        $user = User::where('phone', $phone)->firstOrFail();
         
-        $code = '123456';
-        // $code = str_pad((string)random_int(0, 999999), 6, '0', STR_PAD_LEFT);
-        VerificationCode::create([
-            'user_id' => $user->id,
-            'phone' => $phone,
-            'code' => $code,
-            'expires_at' => now()->addMinutes(10),
-        ]);
+        if ($user->verification_code) {
+            return response()->json(['message' => 'Verification code already sent.'], 400);
+        } else {
+            $code = '123456';
+            // $code = str_pad((string)random_int(0, 999999), 6, '0', STR_PAD_LEFT);
+            VerificationCode::create([
+                'user_id' => $user->id,
+                'phone' => $phone,
+                'code' => $code,
+                'expires_at' => now()->addMinutes(10),
+            ]);
+        }
 
         // TODO: integrate SMS provider here to actually send $code to $phone
         return response()->json(['message' => 'Verification code sent.', 'debug_code' => $code]);

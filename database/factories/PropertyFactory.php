@@ -18,6 +18,7 @@ class PropertyFactory extends Factory
     {
         return [
             'user_id' => \App\Models\User::inRandomOrder()->first()?->id ?? 1,
+            'slug' => $this->faker->unique()->slug(),
             'category_id' => \App\Models\Category::inRandomOrder()->first()?->id ?? 1,
             'property_type_id' => \App\Models\PropertyType::inRandomOrder()->first()?->id ?? 1,
             'contract_type_id' => \App\Models\ContractType::inRandomOrder()->first()?->id ?? 1,

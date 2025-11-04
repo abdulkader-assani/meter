@@ -16,6 +16,7 @@ class CategoryContractType extends Model
         'category_id',
         'contract_type_id'
     ];
+    
 
     public function category()
     {

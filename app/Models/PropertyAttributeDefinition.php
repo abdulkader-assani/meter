@@ -15,6 +15,17 @@ class PropertyAttributeDefinition extends Model
         'name'
     ];
 
+    // -------------------------------------------------------------
+    // Route Key Name
+    // -------------------------------------------------------------
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+    // -------------------------------------------------------------
+    // Relationships
+    // -------------------------------------------------------------
+
     public function propertyType()
     {
         return $this->belongsTo(PropertyType::class);

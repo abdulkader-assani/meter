@@ -16,12 +16,14 @@ class CategorySeeder extends Seeder
         Category::insert([
             [
                 'code' => 'residential',
+                'slug' => 'residential',
                 'name_ar' => 'سكني',
                 'name_en' => 'Residential',
                 'created_at' => now(), 'updated_at' => now()
             ],
             [
                 'code' => 'commercial',
+                'slug' => 'commercial',
                 'name_ar' => 'تجاري',
                 'name_en' => 'Commercial',
                 'created_at' => now(), 'updated_at' => now()

@@ -16,6 +16,7 @@ class ContractTypeSeeder extends Seeder
         ContractType::insert([
             [
                 'code' => 'rent',
+                'slug' => 'rent',
                 'name_ar' => 'إيجار',
                 'name_en' => 'Rent',
                 'created_at' => now(),
@@ -23,6 +24,7 @@ class ContractTypeSeeder extends Seeder
             ],
             [
                 'code' => 'sale',
+                'slug' => 'sale',
                 'name_ar' => 'بيع',
                 'name_en' => 'Sale',
                 'created_at' => now(),

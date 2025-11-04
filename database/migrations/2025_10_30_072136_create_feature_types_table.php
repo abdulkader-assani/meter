@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('feature_types', function (Blueprint $table) {
             $table->id();
+            $table->string('slug', 255)->unique()->nullable();
             $table->string('code', 100);
             $table->string('name', 200);
             $table->timestamps();

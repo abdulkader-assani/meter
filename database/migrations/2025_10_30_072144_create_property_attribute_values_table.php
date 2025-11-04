@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('property_attribute_values', function (Blueprint $table) {
             $table->id();
+            $table->string('slug', 255)->unique()->nullable();
             $table->unsignedBigInteger('property_id');
             $table->unsignedBigInteger('attribute_id');
             $table->string('value', 255);

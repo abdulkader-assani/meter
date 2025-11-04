@@ -13,8 +13,10 @@ class UpdatePropertyRequest extends FormRequest
 
     public function rules(): array
     {
+        $id = $this->route('property')?->id ?? null;
         return [
             'category_id' => 'sometimes|required|exists:categories,id',
+            'slug' => 'sometimes|required|string|max:100|unique:properties,slug,' . $id,
             'property_type_id' => 'sometimes|required|exists:property_types,id',
             'contract_type_id' => 'sometimes|required|exists:contract_types,id',
             'price' => 'sometimes|required|numeric|min:0',

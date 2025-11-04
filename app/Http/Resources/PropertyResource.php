@@ -23,7 +23,7 @@ class PropertyResource extends JsonResource
             'contract_type' => $this->whenLoaded('contractType'),
             'features' => $this->whenLoaded('features'),
             'attribute_values' => $this->whenLoaded('propertyAttributeValues'),
-            'created_at' => $this->created_at,
+            'created_at' => $this->created_at,  
             'updated_at' => $this->updated_at,
         ];
     }

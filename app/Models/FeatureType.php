@@ -15,6 +15,18 @@ class FeatureType extends Model
         'name'
     ];
 
+    // -------------------------------------------------------------
+    // Route Key Name
+    // -------------------------------------------------------------
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+    // -------------------------------------------------------------
+    // Relationships
+    // -------------------------------------------------------------
+
+    
     public function features()
     {
         return $this->hasMany(Feature::class, 'type_id');
