@@ -11,6 +11,7 @@ class ContractType extends Model
 
     protected $fillable = [
         'code',
+        'slug',
         'name_ar',
         'name_en'
     ];

@@ -11,6 +11,7 @@ class PropertyType extends Model
 
     protected $fillable = [
         'category_id',
+        'slug',
         'code',
         'name_ar',
         'name_en'
