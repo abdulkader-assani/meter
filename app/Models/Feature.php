@@ -12,6 +12,7 @@ class Feature extends Model
     use HasFactory;
 
     protected $fillable = [
+        'slug',
         'type_id',
         'code',
         'name'

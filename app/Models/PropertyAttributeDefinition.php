@@ -10,6 +10,7 @@ class PropertyAttributeDefinition extends Model
     use HasFactory;
 
     protected $fillable = [
+        'slug',
         'property_type_id',
         'code',
         'name'

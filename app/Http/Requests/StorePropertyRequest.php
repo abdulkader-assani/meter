@@ -15,7 +15,7 @@ class StorePropertyRequest extends FormRequest
     {
         return [
             'category_id' => 'required|exists:categories,id',
-            'slug' => 'required|string|max:100|unique:properties,slug',
+            'slug' => 'nullable|string|max:255|unique:properties,slug',
             'property_type_id' => 'required|exists:property_types,id',
             'contract_type_id' => 'required|exists:contract_types,id',
             'price' => 'required|numeric|min:0',

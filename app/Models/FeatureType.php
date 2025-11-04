@@ -11,6 +11,7 @@ class FeatureType extends Model
     use HasFactory;
 
     protected $fillable = [
+        'slug',
         'code',
         'name'
     ];
